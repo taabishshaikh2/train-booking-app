@@ -22,7 +22,7 @@ const Seats = () => {
     const fetchSeats = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/seats/", {
+        const res = await axios.get("https://train-booking-backend-wine.vercel.app/api/seats/", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`, // Attach token
@@ -138,7 +138,7 @@ const Seats = () => {
       console.log(bookedSeats);
       // Send booking request to backend
       await axios.post(
-        "http://localhost:5000/api/seats/book",
+        "https://train-booking-backend-wine.vercel.app/api/seats/book",
         { seats: bookedSeats },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -174,7 +174,7 @@ const Seats = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/seats/reset", {}, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post("https://train-booking-backend-wine.vercel.app/api/seats/reset", {}, { headers: { Authorization: `Bearer ${token}` } });
 
       setSeats((prevSeats) =>
         prevSeats.map((s) => ({ ...s, is_reserved: false, reserved_by: null }))
